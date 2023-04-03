@@ -1,0 +1,71 @@
+﻿@model WebBike.Models.DBF.Brand
+
+@{
+    ViewBag.Title = "BrandDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BrandDetails</h2>
+
+<div>
+    <h4>Brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinh)
+        </dt>
+
+        <dd>
+            <img style="outline-style:groove;outline-width:2px;border-radius:10px" src="@Html.DisplayFor(model => model.hinh)" height="150" width="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<h2>Bikes of this category: </h2>
+<div class="row">
+    @foreach (var item in ViewBag.ListBike)
+    {
+        <div style="max-width:240px" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div style="outline-width:1px;outline-style:groove;border-radius:10px" class="panel panel-default">
+                <div style="margin:8px" class="panel panel-heading">
+                    <b><i style="color:cornflowerblue">@item.Name</i></b>
+                </div>
+                <div style="margin:8px" class="panel-body">
+                    <p><strong>Giá:  </strong>@item.Gia ₫</p>
+
+                    <p><strong>Năm Sản Xuất: </strong>@item.NSX</p>
+                    <p><img style="border-radius:10px" src="@item.Hinh" alt="hinh thumnail" height="150" width="200"></p>
+                </div>
+                <div class="panel-footer clearfix">
+                    <div style="margin:8px;padding-bottom:10px" class="pull-right">
+                        <a href="#" class="btn btn-primary">Đặt Mua</a>
+                        @Html.ActionLink("Chi tiết...", "BikeDetails", new
+                        {
+                            id =
+                        item.Id
+                        }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

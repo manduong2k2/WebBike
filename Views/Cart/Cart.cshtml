@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebBike.Models.Cart>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Khách hàng: @ViewBag.Username</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bikeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bikeImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bikeName)
+            </td>
+            <td><img src="@item.bikeImage" width="180" /></td>
+            @using (Html.BeginForm("CartUpdate", "Cart", new { @id = item.Id }))
+            {
+                <td>@String.Format("{0:0,0}", item.price) VND</td>
+                <td><input type="number" min="1" name="txtSoLg" value="@item.number" /></td>
+                <td>@Html.DisplayFor(modelItem => item.total)</td>
+                <td><a href="@Url.Action("Details", "Book", new { id = item.Id })">Chi Tiết</a> | @Html.ActionLink("Xóa", "Delete", new { @id = item.Id })</td>
+                <td><input type="submit" value="cập nhật" class="btn btn-success" /></td>
+            }
+        </tr>
+    }
+
+    <tr style="font-weight:bold; text-align:left; color:red">
+        <td colspan="2">Số loại sách: @ViewBag.productNumber</td>
+        <td colspan="2">Số lượng sách: @ViewBag.totalNumber</td>
+        <td colspan="4">Tổng tiền: @String.Format("{0:0,0}", ViewBag.totalCost) VND</td>
+    </tr>
+
+    <tr style="font-weight:bold; text-align:right; color:blue">
+        <td colspan="5">@Html.ActionLink("Xóa giỏ hàng", "CartDelete")</td>
+    </tr>
+
+    <tr style="font-weight:bold; text-align:right; color:blue">
+        <td colspan="5">@Html.ActionLink("Đặt hàng", "Confirm")</td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "AdminArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<li>@Html.ActionLink("Quản lý xe", "Index", "Bike", new { area = "" }, new { @class = "nav-link" })</li>
+<li>@Html.ActionLink("Quản lý hãng xe", "Index", "Brand", new { area = "" }, new { @class = "nav-link" })</li>
+<li>@Html.ActionLink("Quản lý loại xe", "Index", "Category", new { area = "" }, new { @class = "nav-link" })</li>
+<h2>AdminArea</h2>
+

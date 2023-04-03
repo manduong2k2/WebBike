@@ -1,0 +1,43 @@
+﻿@model WebBike.Models.DBF.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinh)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.hinh)" style="border-radius:10px" height="150" width="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoaiId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebBike.Models.DBF.Brand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Các thương hiệu xe nổi tiếng</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    @item.tenHang
+                </div>
+                <div class="panel-body">
+                    <p><img style="outline-style:groove;outline-width:2px;border-radius:10px" src="@item.hinh" alt="hinh thumnail" height="150" width="200"></p>
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        @Html.ActionLink("Chi tiết...", "BrandDetails","Home", new
+                        {
+                            id =
+                        item.maHang
+                        }, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

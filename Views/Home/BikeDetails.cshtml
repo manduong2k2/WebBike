@@ -1,0 +1,90 @@
+﻿@model WebBike.Models.DBF.Bike
+
+@{
+    ViewBag.Title = "BikeDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Category.TenLoai)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Hãng: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.tenHang)
+        </dd>
+
+        <dt>
+            Loại xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.TenLoai)
+        </dd>
+
+        <dt>
+            Hình ảnh: 
+        </dt>
+
+        <dd>
+            <img style="border-radius:10px" src="@Html.DisplayFor(model => model.Hinh)" height="150" width="200" />
+        </dd>
+
+        <dt>
+            Số lượng: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLT)
+        </dd>
+
+        <dt>
+            Năm sản xuất
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NSX)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia) ₫
+        </dd>
+
+        <dt>
+            Ngày đăng ký: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangKy)
+        </dd>
+
+        <dt>
+            Dung tích xi lanh: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DTXiLanh) cm³
+        </dd>
+
+        <dt>
+            Chi tiết: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

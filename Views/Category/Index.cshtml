@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebBike.Models.DBF.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoai)
+        </td>
+        <td>
+            <img style="border-radius:10px" src="@Html.DisplayFor(modelItem => item.hinh)" height="150" width="200" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoaiId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoaiId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LoaiId })
+        </td>
+    </tr>
+}
+
+</table>
